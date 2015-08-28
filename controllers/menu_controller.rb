@@ -13,7 +13,8 @@ class MenuController
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View by entry number"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      selection = gets.to_i
@@ -35,6 +36,10 @@ class MenuController
          read_csv
          main_menu
        when 5
+         system "clear"
+         entry_by_number
+         main_menu
+       when 6
          puts "Good-bye!"
          exit(0)
      else
@@ -75,6 +80,20 @@ class MenuController
    end
 
    def read_csv
+   end
+
+   def entry_by_number
+     print "Enter the entry number: "
+     # because using to_i, no need to use chomp
+     index = gets.to_i
+     # while with two cinditions didn't work!
+     until index.between?(1,@address_book.entries.size) do
+       puts "Out of bound index!"
+       print "Please enter between #{1} and #{@address_book.entries.size}: "
+       index = gets.to_i
+     end
+     entry = @address_book.entries[index-1]
+     puts entry.to_s
    end
 
    def entry_submenu(entry)
