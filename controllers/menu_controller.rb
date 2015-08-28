@@ -94,6 +94,17 @@ class MenuController
      end
      entry = @address_book.entries[index-1]
      puts entry.to_s
+     # Alternative solution:
+     # index = gets.to_i
+     # if index < 1
+     #  puts @address_book.entries[selection - 1]
+     #  prints "press enter to return to main menu"
+     #  gets.chomp
+     #  system "clear"
+     # else
+     #  puts #{index} is not a valid input"
+     #  entry_by_number
+     # end
    end
 
    def entry_submenu(entry)
