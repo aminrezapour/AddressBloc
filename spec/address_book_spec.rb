@@ -24,6 +24,17 @@ RSpec.describe AddressBook do
        end
    end
 
+   context "#demolish method" do
+       it "should removes all entries" do
+           book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+           book.add_entry('Adv Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+           book.add_entry('Adz Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+
+           book.demolish
+           expect(book.entries.size).to eq 0
+       end
+   end
+
    context "#add_entry" do
        it "adds only one entry to the address book" do
            book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
